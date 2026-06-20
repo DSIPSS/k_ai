@@ -1,0 +1,10 @@
+// {
+//   "functions": {
+//     "api/chat.py": {
+//       "runtime": "python3.12"
+//     }
+//   }
+// }
+{
+  "cleanUrls": true
+}
