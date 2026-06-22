@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kisan AI Farm Assistant</title>
+  <title>Farmer AI Assistant</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,9 +40,9 @@
 
       --leaf: #4a7c59;
 
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
-      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.09);
-      --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.13);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.09);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.13);
 
       --r-sm: 0.5rem;
       --r-md: 0.85rem;
@@ -59,8 +59,8 @@
       --surface: #18181a;
       --surface2: #1e1e20;
       --surface3: #242426;
-      --border: rgba(255, 255, 255, 0.1);
-      --divider: rgba(255, 255, 255, 0.06);
+      --border: rgba(255,255,255,0.1);
+      --divider: rgba(255,255,255,0.06);
 
       --text: #e8e6e0;
       --muted: #9a9790;
@@ -79,9 +79,9 @@
 
       --leaf: #74c69d;
 
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-      --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.5);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.5);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -104,6 +104,7 @@
       margin: auto;
     }
 
+    /* ─── HEADER ─── */
     .header {
       position: sticky;
       top: 0;
@@ -149,22 +150,17 @@
     .hdr-actions { display: flex; align-items: center; gap: 0.6rem; }
 
     .icon-btn {
-      width: 42px;
-      height: 42px;
+      width: 42px; height: 42px;
       border-radius: var(--r-full);
       border: 1px solid var(--border);
-      display: grid;
-      place-items: center;
+      display: grid; place-items: center;
       background: var(--surface);
       color: var(--text);
       transition: 0.15s;
       font-size: 1rem;
     }
 
-    .icon-btn:hover {
-      border-color: var(--green);
-      color: var(--green);
-    }
+    .icon-btn:hover { border-color: var(--green); color: var(--green); }
 
     .lang-sel {
       height: 42px;
@@ -176,6 +172,7 @@
       font-size: 0.8rem;
     }
 
+    /* ─── HERO ─── */
     .hero { padding: 3.5rem 0 2.5rem; }
 
     .hero-grid {
@@ -204,7 +201,7 @@
       font-size: clamp(2rem, 1.2rem + 3vw, 3.8rem);
       line-height: 1.04;
       letter-spacing: -0.03em;
-      max-width: 13ch;
+      max-width: 14ch;
       font-weight: 700;
     }
 
@@ -236,11 +233,7 @@
       white-space: nowrap;
     }
 
-    .btn-primary {
-      background: var(--green);
-      color: var(--inverse);
-    }
-
+    .btn-primary { background: var(--green); color: var(--inverse); }
     .btn-primary:hover { filter: brightness(1.1); }
 
     .btn-ghost {
@@ -249,71 +242,173 @@
       color: var(--text);
     }
 
-    .btn-ghost:hover {
-      border-color: var(--green);
-      color: var(--green);
-    }
+    .btn-ghost:hover { border-color: var(--green); color: var(--green); }
 
+    /* ─── HERO CARD (redesigned) ─── */
     .hero-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--r-xl);
-      padding: 1.25rem;
-      display: grid;
-      gap: 0.9rem;
+      overflow: hidden;
       box-shadow: var(--shadow-md);
     }
 
-    .kpi-row {
+    .hero-card-header {
+      background: linear-gradient(135deg, var(--green) 0%, #4a9e6e 100%);
+      padding: 1.1rem 1.25rem 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-card-title {
+      color: rgba(255,255,255,0.95);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-card-date {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.72rem;
+    }
+
+    .hero-card-body { padding: 1.1rem 1.25rem; display: grid; gap: 0.85rem; }
+
+    /* Stat strip */
+    .stat-strip {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 0.7rem;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      overflow: hidden;
     }
 
-    .kpi {
-      background: var(--surface2);
-      border-radius: var(--r-lg);
-      padding: 0.85rem;
+    .stat-cell {
+      padding: 0.8rem 0.6rem;
       text-align: center;
+      background: var(--surface2);
     }
 
-    .kpi-val {
-      font-size: 1.6rem;
-      font-weight: 700;
+    .stat-cell + .stat-cell { border-left: 1px solid var(--border); }
+
+    .stat-val {
+      font-size: 1.5rem;
+      font-weight: 800;
       line-height: 1;
+      letter-spacing: -0.02em;
       font-variant-numeric: tabular-nums;
+      color: var(--green);
     }
 
-    .kpi-label {
+    .stat-label {
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Alert rows */
+    .alert-list { display: grid; gap: 0.5rem; }
+
+    .alert-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 0.9rem;
+      border-radius: var(--r-md);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      transition: 0.15s;
+    }
+
+    .alert-row:hover { border-color: var(--green); }
+
+    .alert-icon {
+      width: 2rem; height: 2rem;
+      border-radius: var(--r-sm);
+      display: grid; place-items: center;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .alert-icon-amber { background: var(--amber-light); }
+    .alert-icon-green { background: var(--green-light); }
+    .alert-icon-sky   { background: var(--sky-light); }
+
+    .alert-body { flex: 1; min-width: 0; }
+
+    .alert-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .alert-detail {
       font-size: 0.72rem;
       color: var(--muted);
-      margin-top: 0.25rem;
-    }
-
-    .signal-list { display: grid; gap: 0.6rem; }
-
-    .signal-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.8rem;
-      padding: 0.8rem 1rem;
-      background: var(--surface2);
-      border-radius: var(--r-md);
-      font-size: 0.85rem;
+      margin-top: 0.05rem;
     }
 
     .badge {
       padding: 0.28rem 0.62rem;
       border-radius: var(--r-full);
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .badge-green { background: var(--green-light); color: var(--green); }
     .badge-amber { background: var(--amber-light); color: var(--amber); }
-    .badge-sky { background: var(--sky-light); color: var(--sky); }
+    .badge-sky   { background: var(--sky-light);   color: var(--sky); }
 
+    .hero-card-footer {
+      padding: 0.75rem 1.25rem;
+      border-top: 1px solid var(--divider);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-note {
+      font-size: 0.72rem;
+      color: var(--faint);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .live-dot {
+      width: 0.45rem; height: 0.45rem;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    .ask-ai-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.85rem;
+      background: var(--green-light);
+      color: var(--green);
+      border-radius: var(--r-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: 0.15s;
+    }
+
+    .ask-ai-btn:hover { background: var(--green); color: var(--inverse); }
+
+    /* ─── WORKSPACE ─── */
     .workspace { padding: 1.5rem 0 3rem; }
 
     .tab-bar {
@@ -367,23 +462,10 @@
       margin-bottom: 1rem;
     }
 
-    .grid2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; }
 
-    .grid3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.85rem;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
-    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
 
     .fg { display: grid; gap: 0.3rem; }
 
@@ -412,10 +494,7 @@
       border-color: transparent;
     }
 
-    textarea.input {
-      min-height: 90px;
-      resize: vertical;
-    }
+    textarea.input { min-height: 90px; resize: vertical; }
 
     .submit-row {
       display: flex;
@@ -441,11 +520,7 @@
     }
 
     .result-title { font-size: 1rem; font-weight: 700; }
-    .result-sub {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.15rem;
-    }
+    .result-sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
 
     .rec-item {
       background: var(--surface2);
@@ -473,11 +548,7 @@
       border: 1px solid var(--border);
     }
 
-    #previewImage {
-      width: 100%;
-      max-height: 220px;
-      object-fit: cover;
-    }
+    #previewImage { width: 100%; max-height: 220px; object-fit: cover; }
 
     .weather-kpis {
       display: grid;
@@ -486,24 +557,9 @@
       margin: 1rem 0;
     }
 
-    .w-kpi {
-      background: var(--surface2);
-      border-radius: var(--r-lg);
-      padding: 0.9rem;
-      text-align: center;
-    }
-
-    .w-kpi-val {
-      font-size: 1.5rem;
-      font-weight: 700;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .w-kpi-label {
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 0.2rem;
-    }
+    .w-kpi { background: var(--surface2); border-radius: var(--r-lg); padding: 0.9rem; text-align: center; }
+    .w-kpi-val { font-size: 1.5rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .w-kpi-label { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
 
     .advisory-item {
       background: var(--surface2);
@@ -516,12 +572,7 @@
 
     .advisory-item:last-child { margin-bottom: 0; }
 
-    .price-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.85rem;
-    }
-
+    .price-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
     .price-table th {
       padding: 0.75rem 0.85rem;
       text-align: left;
@@ -532,22 +583,12 @@
       letter-spacing: 0.04em;
       border-bottom: 1px solid var(--divider);
     }
-
-    .price-table td {
-      padding: 0.75rem 0.85rem;
-      border-bottom: 1px solid var(--divider);
-    }
-
+    .price-table td { padding: 0.75rem 0.85rem; border-bottom: 1px solid var(--divider); }
     .price-table tr:last-child td { border-bottom: none; }
     .trend-up { color: var(--green); font-weight: 600; }
     .trend-down { color: var(--amber); font-weight: 600; }
 
-    .library-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.85rem;
-      margin-top: 1rem;
-    }
+    .library-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; margin-top: 1rem; }
 
     .lib-card {
       background: var(--surface);
@@ -557,28 +598,11 @@
       transition: 0.18s;
     }
 
-    .lib-card:hover {
-      box-shadow: var(--shadow-md);
-      border-color: var(--green);
-    }
+    .lib-card:hover { box-shadow: var(--shadow-md); border-color: var(--green); }
+    .lib-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .lib-card p { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.75rem; }
 
-    .lib-card h4 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-    }
-
-    .lib-card p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
-    }
-
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
     .chip {
       background: var(--green-light);
@@ -589,11 +613,12 @@
       font-weight: 600;
     }
 
+    /* ─── CHAT OVERLAY ─── */
     .overlay {
       position: fixed;
       inset: 0;
       z-index: 100;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0,0,0,0.5);
       backdrop-filter: blur(6px);
       display: flex;
       align-items: flex-end;
@@ -604,10 +629,7 @@
       transition: 0.2s;
     }
 
-    .overlay.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    .overlay.open { opacity: 1; pointer-events: auto; }
 
     .chat-modal {
       background: var(--surface);
@@ -641,8 +663,7 @@
     }
 
     .ai-dot {
-      width: 0.55rem;
-      height: 0.55rem;
+      width: 0.55rem; height: 0.55rem;
       border-radius: 50%;
       background: var(--green);
       animation: pulse 2s infinite;
@@ -654,20 +675,15 @@
     }
 
     .chat-close {
-      width: 32px;
-      height: 32px;
+      width: 32px; height: 32px;
       border-radius: 50%;
       border: 1px solid var(--border);
-      display: grid;
-      place-items: center;
+      display: grid; place-items: center;
       font-size: 1.1rem;
       color: var(--muted);
     }
 
-    .chat-close:hover {
-      color: var(--text);
-      border-color: var(--text);
-    }
+    .chat-close:hover { color: var(--text); border-color: var(--text); }
 
     .chat-msgs {
       flex: 1;
@@ -691,7 +707,7 @@
 
     @keyframes msgIn {
       from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     .msg-user {
@@ -715,9 +731,9 @@
 
     @keyframes dots {
       0%, 20% { content: ""; }
-      40% { content: "."; }
-      60% { content: ".."; }
-      100% { content: "..."; }
+      40%      { content: "."; }
+      60%      { content: ".."; }
+      100%     { content: "..."; }
     }
 
     .chat-input-area {
@@ -750,11 +766,9 @@
 
     .voice-toggle,
     .send-btn {
-      width: 44px;
-      height: 44px;
+      width: 44px; height: 44px;
       border-radius: 50%;
-      display: grid;
-      place-items: center;
+      display: grid; place-items: center;
       flex-shrink: 0;
     }
 
@@ -775,8 +789,8 @@
     }
 
     @keyframes voicePulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(74, 124, 89, 0.4); }
-      50% { box-shadow: 0 0 0 10px rgba(74, 124, 89, 0); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(74,124,89,0.4); }
+      50%       { box-shadow: 0 0 0 10px rgba(74,124,89,0); }
     }
 
     .send-btn {
@@ -797,17 +811,16 @@
       height: 1.4rem;
     }
 
+    /* ─── BOTTOM NAV ─── */
     .bottom-nav {
       position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      left: 0; right: 0; bottom: 0;
       z-index: 25;
       background: color-mix(in srgb, var(--bg) 92%, transparent);
       backdrop-filter: blur(14px);
       border-top: 1px solid var(--border);
       display: none;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
 
     .bnav-btn {
@@ -821,18 +834,12 @@
       transition: 0.15s;
     }
 
-    .bnav-btn.active {
-      color: var(--green);
-      font-weight: 700;
-    }
-
-    .bnav-icon {
-      font-size: 1.25rem;
-      line-height: 1;
-    }
+    .bnav-btn.active { color: var(--green); font-weight: 700; }
+    .bnav-icon { font-size: 1.25rem; line-height: 1; }
 
     .hidden { display: none !important; }
 
+    /* ─── HOW IT WORKS ─── */
     .how-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -856,33 +863,26 @@
       margin-bottom: 0.5rem;
     }
 
-    .how-card h3 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-    }
+    .how-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .how-card p { font-size: 0.82rem; color: var(--muted); }
 
-    .how-card p {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 860px) {
       .hero-grid, .grid2, .how-grid, .library-grid { grid-template-columns: 1fr; }
-      .kpi-row { grid-template-columns: repeat(3, 1fr); }
+      .stat-strip { grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (max-width: 600px) {
       body { padding-bottom: 6.5rem; }
       .bottom-nav { display: grid; }
       .hero { padding-top: 2rem; }
-      .kpi-row { grid-template-columns: 1fr 1fr; }
       .grid3, .form-grid { grid-template-columns: 1fr; }
       .library-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 400px) {
-      .kpi-row, .library-grid { grid-template-columns: 1fr; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .library-grid { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -895,25 +895,16 @@
     <div class="container header-inner">
       <div class="brand">
         <div class="brand-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 21C8 18 3 14.5 3 9.5A5.5 5.5 0 0 1 13 6.5a5.5 5.5 0 0 1 8 5c0 4.5-5 8-9 9.5z"></path>
-            <path d="M12 10v5"></path>
-            <path d="M9.5 12.5h5"></path>
-          </svg>
+          <span style="color:white;font-weight:800;font-size:0.72rem;letter-spacing:0.04em;line-height:1;">UGS</span>
         </div>
         <div>
-          <div class="brand-name">Kisan AI</div>
-          <div class="brand-sub">Farm Intelligence</div>
+          <div class="brand-name">Farmer AI Assistant</div>
+          <div class="brand-sub">Smart farm intelligence</div>
         </div>
       </div>
 
       <div class="hdr-actions">
         <button class="icon-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle dark/light mode">◐</button>
-        <!-- <button class="icon-btn" id="voiceBtn" title="Talk to AI assistant" aria-label="Open AI voice assistant">🎙</button>
-        <select class="lang-sel" id="langSel" aria-label="Select language">
-          <option value="en">English</option>
-          <option value="hi">Hindi</option>
-        </select> -->
       </div>
     </div>
   </header>
@@ -921,10 +912,13 @@
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <span class="eyebrow">AI-Powered</span>
+        <span class="eyebrow">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+          AI-Powered
+        </span>
         <h1>Smarter farming <em>starts here.</em></h1>
         <p class="hero-lead">
-          Diagnose crop disease, get soil-based recommendations, track mandi prices, and talk to a live AI assistant all in one tool built for Indian farmers.
+          Diagnose crop disease, get soil-based recommendations, track mandi prices, and talk to a live AI assistant — all in one tool built for Indian farmers.
         </p>
         <div class="hero-ctas">
           <button class="btn btn-primary" data-target="diagnosis">
@@ -933,22 +927,76 @@
               <path d="m21 21-4.35-4.35"></path>
             </svg>
             Run diagnosis
-          <!-- </button>
-          <button class="btn btn-ghost" data-target="market">Check prices</button>
-          <button class="btn btn-ghost" id="voiceBtnHero" aria-label="Open AI assistant">Ask AI</button> -->
+          </button>
+          <button class="btn btn-ghost" data-target="advisor">Crop advisor</button>
+          <button class="btn btn-ghost" id="voiceBtnHero" aria-label="Open AI assistant">Ask AI</button>
         </div>
       </div>
 
-      <aside class="hero-card">
-        <div class="kpi-row">
-          <div class="kpi"><div class="kpi-val">5</div><div class="kpi-label">Tools</div></div>
-          <div class="kpi"><div class="kpi-val">2</div><div class="kpi-label">Languages</div></div>
-          <div class="kpi"><div class="kpi-val">AI</div><div class="kpi-label">Assistant</div></div>
+      <!-- Redesigned hero card -->
+      <aside class="hero-card" aria-label="Farm dashboard summary">
+        <div class="hero-card-header">
+          <span class="hero-card-title">🌾 Today's Farm Brief</span>
+          <span class="hero-card-date" id="heroDate">Loading…</span>
         </div>
-        <div class="signal-list">
-          <div class="signal-item"><span>Disease risk</span><span class="badge badge-amber">Inspect today</span></div>
-          <div class="signal-item"><span>Tomato mandi trend</span><span class="badge badge-green">Price rising 12%</span></div>
-          <div class="signal-item"><span>Rain advisory</span><span class="badge badge-sky">Check forecast</span></div>
+
+        <div class="hero-card-body">
+          <!-- Stat strip -->
+          <div class="stat-strip" role="list">
+            <div class="stat-cell" role="listitem">
+              <div class="stat-val">5</div>
+              <div class="stat-label">Tools</div>
+            </div>
+            <div class="stat-cell" role="listitem">
+              <div class="stat-val">2</div>
+              <div class="stat-label">Languages</div>
+            </div>
+            <div class="stat-cell" role="listitem">
+              <div class="stat-val">AI</div>
+              <div class="stat-label">Assistant</div>
+            </div>
+          </div>
+
+          <!-- Alert list -->
+          <div class="alert-list" role="list" aria-label="Farm alerts">
+            <div class="alert-row" role="listitem">
+              <div class="alert-icon alert-icon-amber" aria-hidden="true">🦠</div>
+              <div class="alert-body">
+                <div class="alert-label">Disease risk detected</div>
+                <div class="alert-detail">Inspect your crop today</div>
+              </div>
+              <span class="badge badge-amber">Inspect</span>
+            </div>
+
+            <div class="alert-row" role="listitem">
+              <div class="alert-icon alert-icon-green" aria-hidden="true">📈</div>
+              <div class="alert-body">
+                <div class="alert-label">Tomato mandi trend</div>
+                <div class="alert-detail">Price rising — 12% this week</div>
+              </div>
+              <span class="badge badge-green">↑ 12%</span>
+            </div>
+
+            <div class="alert-row" role="listitem">
+              <div class="alert-icon alert-icon-sky" aria-hidden="true">🌧️</div>
+              <div class="alert-body">
+                <div class="alert-label">Rain advisory</div>
+                <div class="alert-detail">60% chance tomorrow — plan spray</div>
+              </div>
+              <span class="badge badge-sky">Forecast</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card-footer">
+          <span class="footer-note">
+            <span class="live-dot" aria-hidden="true"></span>
+            Live signals
+          </span>
+          <button class="ask-ai-btn" id="voiceBtn" aria-label="Open AI assistant">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            Ask AI
+          </button>
         </div>
       </aside>
     </div>
@@ -959,11 +1007,10 @@
       <div class="tab-bar" id="tabs">
         <button class="tab active" data-tab="diagnosis">Disease</button>
         <button class="tab" data-tab="advisor">Advisor</button>
-        <!-- <button class="tab" data-tab="weather">Weather</button>
-        <button class="tab" data-tab="market">Market</button> -->
         <button class="tab" data-tab="learn">Learn</button>
       </div>
 
+      <!-- DIAGNOSIS -->
       <section class="app-section active" id="diagnosis">
         <div class="grid2">
           <div class="panel">
@@ -1013,6 +1060,7 @@
         </div>
       </section>
 
+      <!-- ADVISOR -->
       <section class="app-section" id="advisor">
         <div class="grid2">
           <div class="panel">
@@ -1059,77 +1107,15 @@
         </div>
       </section>
 
-      <section class="app-section" id="weather">
-        <div class="grid2">
-          <div class="panel">
-            <div class="panel-title">Weather dashboard</div>
-            <div class="panel-sub">5-day outlook and farm advisories for your city.</div>
 
-            <div class="fg" style="margin-bottom:0.5rem;">
-              <label for="citySelector">City</label>
-              <select id="citySelector" class="input">
-                <option>Hyderabad</option>
-                <option>Kolkata</option>
-                <option>Pune</option>
-                <option>Lucknow</option>
-                <option>Bengaluru</option>
-              </select>
-            </div>
-
-            <div class="weather-kpis" id="weatherSummary"></div>
-            <div class="panel" style="background:var(--surface2);padding:0.85rem;">
-              <canvas id="weatherChart" height="130"></canvas>
-            </div>
-          </div>
-
-          <div class="panel">
-            <div class="panel-title">Farm advisories</div>
-            <div class="advisory-list" id="advisoryList"></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="app-section" id="market">
-        <div class="grid2">
-          <div class="panel">
-            <div class="panel-title">Mandi prices</div>
-            <div class="panel-sub">Demo market board with price direction and simple action signals.</div>
-
-            <div style="overflow-x:auto;">
-              <table class="price-table">
-                <thead>
-                  <tr>
-                    <th>Crop</th>
-                    <th>₹/qtl</th>
-                    <th>Trend</th>
-                    <th>Mandi</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody id="priceTableBody"></tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="panel">
-            <div class="panel-title">7-day trend</div>
-            <div class="panel" style="background:var(--surface2);padding:0.85rem;">
-              <canvas id="priceChart" height="180"></canvas>
-            </div>
-            <div style="margin-top:0.85rem;">
-              <button class="btn btn-ghost" id="refreshMarket">Refresh data</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <!-- LEARN -->
       <section class="app-section" id="learn">
         <div class="panel">
           <div class="panel-title">Crop library</div>
           <div class="panel-sub">Quick cultivation, disease, and selling guides. Search to filter.</div>
           <div class="fg" style="margin-top:0.5rem;">
             <label for="cropSearch">Search crops</label>
-            <input id="cropSearch" class="input" placeholder="tomato, rice, cotton" />
+            <input id="cropSearch" class="input" placeholder="tomato, rice, cotton…" />
           </div>
           <div class="library-grid" id="cropLibrary"></div>
         </div>
@@ -1137,6 +1123,7 @@
     </div>
   </div>
 
+  <!-- HOW IT WORKS -->
   <div class="container" style="padding-bottom:2rem;">
     <div class="how-grid">
       <div class="how-card">
@@ -1152,35 +1139,35 @@
       <div class="how-card">
         <div class="how-num">Step 3 · Ask AI</div>
         <h3>Talk to the assistant</h3>
-        <p>Tap to ask any farming question by voice or text, powered through Gemini.</p>
+        <p>Ask any farming question by voice or text — get instant, practical advice.</p>
       </div>
     </div>
   </div>
 
+  <!-- BOTTOM NAV -->
   <nav class="bottom-nav" aria-label="Main navigation">
     <button class="bnav-btn active" data-tab="diagnosis"><span class="bnav-icon">🦠</span>Disease</button>
     <button class="bnav-btn" data-tab="advisor"><span class="bnav-icon">🌱</span>Advisor</button>
-    <button class="bnav-btn" data-tab="weather"><span class="bnav-icon">☁️</span>Weather</button>
-    <button class="bnav-btn" data-tab="market"><span class="bnav-icon">📈</span>Market</button>
     <button class="bnav-btn" data-tab="learn"><span class="bnav-icon">📚</span>Learn</button>
   </nav>
 
+  <!-- CHAT OVERLAY -->
   <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="AI Farming Assistant">
     <div class="chat-modal">
       <div class="chat-header">
-        <div class="chat-title"><span class="ai-dot"></span>Kisan AI · Ask anything</div>
+        <div class="chat-title"><span class="ai-dot"></span>Farmer AI · Ask anything</div>
         <button class="chat-close" id="closeChat" aria-label="Close assistant">×</button>
       </div>
 
       <div class="chat-msgs" id="chatMsgs">
-        <div class="msg msg-ai">Namaste! I’m your Kisan AI assistant. Ask me about crop diseases, weather, soil, or prices in English or Hindi. You can also use the mic button to speak!</div>
+        <div class="msg msg-ai">Namaste! I'm your Farmer AI assistant. Ask me about crop diseases, weather, soil, or prices in English or Hindi. You can also use the mic button to speak!</div>
       </div>
 
       <div class="voice-status" id="voiceStatus"></div>
 
       <div class="chat-input-area">
-        <textarea class="chat-text" id="chatInput" placeholder="Ask about crops, disease, soil, prices..." rows="1" aria-label="Type your question"></textarea>
-        <button class="voice-toggle" id="micBtn" title="Hold to speak" aria-label="Toggle voice input">🎤</button>
+        <textarea class="chat-text" id="chatInput" placeholder="Ask about crops, disease, soil, prices…" rows="1" aria-label="Type your question"></textarea>
+        <button class="voice-toggle" id="micBtn" title="Tap to speak" aria-label="Toggle voice input">🎤</button>
         <button class="send-btn" id="sendBtn" title="Send message" aria-label="Send message" disabled>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="22" y1="2" x2="11" y2="13"></line>
@@ -1192,9 +1179,10 @@
   </div>
 
   <script>
-    const qs = (s, p = document) => p.querySelector(s);
+    const qs  = (s, p = document) => p.querySelector(s);
     const qsa = (s, p = document) => [...p.querySelectorAll(s)];
 
+    /* ── Theme ── */
     const root = document.documentElement;
     const pref = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     root.setAttribute("data-theme", pref);
@@ -1202,10 +1190,14 @@
     qs("#themeToggle").addEventListener("click", () => {
       const cur = root.getAttribute("data-theme");
       root.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
-      renderWeather(qs("#citySelector").value);
-      renderMarket();
     });
 
+    /* ── Date in hero card ── */
+    qs("#heroDate").textContent = new Date().toLocaleDateString("en-IN", {
+      weekday: "short", day: "numeric", month: "short"
+    });
+
+    /* ── Tab switching ── */
     function switchTab(id) {
       qsa(".tab").forEach(t => t.classList.toggle("active", t.dataset.tab === id));
       qsa(".app-section").forEach(s => s.classList.toggle("active", s.id === id));
@@ -1216,52 +1208,35 @@
     qsa(".tab, .bnav-btn").forEach(b => b.addEventListener("click", () => switchTab(b.dataset.tab)));
     qsa("[data-target]").forEach(b => b.addEventListener("click", () => switchTab(b.dataset.target)));
 
+    /* ── Disease DB ── */
     const diseaseDB = {
       Tomato: [
-        {
-          name: "Early Blight",
-          confidence: 91,
+        { name: "Early Blight", confidence: 91,
           symptoms: ["Brown concentric spots on older leaves", "Yellowing around lesions", "Reduced plant vigour"],
-          actions: ["Remove infected lower leaves", "Apply preventive fungicide", "Avoid overhead watering late in the day"]
-        },
-        {
-          name: "Leaf Mold",
-          confidence: 87,
+          actions:  ["Remove infected lower leaves", "Apply preventive fungicide", "Avoid overhead watering late in the day"] },
+        { name: "Leaf Mold",   confidence: 87,
           symptoms: ["Pale green spots on upper surface", "Olive mold below leaves", "Spreads in high humidity"],
-          actions: ["Improve ventilation in canopy", "Reduce leaf wetness period", "Scout weekly in dense planting"]
-        }
+          actions:  ["Improve ventilation in canopy", "Reduce leaf wetness period", "Scout weekly in dense planting"] }
       ],
       Potato: [
-        {
-          name: "Late Blight",
-          confidence: 89,
+        { name: "Late Blight", confidence: 89,
           symptoms: ["Water-soaked patches", "Rapid leaf browning", "Tuber infection risk"],
-          actions: ["Spray protectant fungicide promptly", "Remove heavily infected plants", "Avoid evening irrigation"]
-        }
+          actions:  ["Spray protectant fungicide promptly", "Remove heavily infected plants", "Avoid evening irrigation"] }
       ],
       Rice: [
-        {
-          name: "Bacterial Leaf Blight",
-          confidence: 84,
+        { name: "Bacterial Leaf Blight", confidence: 84,
           symptoms: ["Yellow to straw-coloured leaf margins", "Drying from tip downward", "Spreads after rain or wind"],
-          actions: ["Use balanced nitrogen", "Drain standing water if severe", "Monitor nearby plants"]
-        }
+          actions:  ["Use balanced nitrogen", "Drain standing water if severe", "Monitor nearby plants"] }
       ],
       Cotton: [
-        {
-          name: "Alternaria Leaf Spot",
-          confidence: 82,
+        { name: "Alternaria Leaf Spot", confidence: 82,
           symptoms: ["Circular brown spots", "Premature leaf fall", "Stress-linked spread"],
-          actions: ["Improve field sanitation", "Balanced nutrition", "Targeted fungicide if widespread"]
-        }
+          actions:  ["Improve field sanitation", "Balanced nutrition", "Targeted fungicide if widespread"] }
       ],
       Chili: [
-        {
-          name: "Anthracnose",
-          confidence: 88,
+        { name: "Anthracnose", confidence: 88,
           symptoms: ["Sunken lesions on fruits and leaves", "Dark margins", "Loss in market quality"],
-          actions: ["Remove infected fruits", "Use clean seed and rotation", "Protective spray during humid spells"]
-        }
+          actions:  ["Remove infected fruits", "Use clean seed and rotation", "Protective spray during humid spells"] }
       ]
     };
 
@@ -1276,7 +1251,7 @@
       e.preventDefault();
       const crop = qs("#cropType").value;
       const db = diseaseDB[crop] || diseaseDB.Tomato;
-      const c = db[Math.floor(Math.random() * db.length)];
+      const c  = db[Math.floor(Math.random() * db.length)];
 
       qs("#diseaseResultCard").innerHTML = `
         <div class="result-top">
@@ -1292,6 +1267,7 @@
       `;
     });
 
+    /* ── Crop recommendation ── */
     function cropRecommendation() {
       const n = +qs("#nitrogen").value;
       const p = +qs("#phosphorus").value;
@@ -1305,22 +1281,10 @@
       let crop = "Millet";
       let reason = "Stable option for moderate inputs.";
 
-      if (t >= 24 && t <= 32 && h >= 60 && r >= 140 && ph >= 6 && ph <= 7.5) {
-        crop = "Rice";
-        reason = "Warm, humid, high-rain conditions fit rice well.";
-      }
-      if (t >= 22 && t <= 30 && ph >= 6 && ph <= 7.5 && n >= 60 && p >= 35) {
-        crop = "Tomato";
-        reason = "Balanced nutrients and moderate climate support tomato.";
-      }
-      if (t >= 20 && t <= 35 && k >= 35 && r < 220 && ph >= 5.5 && ph <= 8) {
-        crop = "Cotton";
-        reason = "Good potassium and broad pH tolerance support cotton.";
-      }
-      if (t >= 18 && t <= 28 && ph >= 5 && ph <= 6.8) {
-        crop = "Potato";
-        reason = "Cooler temperature and slightly acidic soil support potato.";
-      }
+      if (t >= 24 && t <= 32 && h >= 60 && r >= 140 && ph >= 6 && ph <= 7.5) { crop = "Rice";   reason = "Warm, humid, high-rain conditions fit rice well."; }
+      if (t >= 22 && t <= 30 && ph >= 6 && ph <= 7.5 && n >= 60 && p >= 35)  { crop = "Tomato"; reason = "Balanced nutrients and moderate climate support tomato."; }
+      if (t >= 20 && t <= 35 && k >= 35 && r < 220 && ph >= 5.5 && ph <= 8)  { crop = "Cotton"; reason = "Good potassium and broad pH tolerance support cotton."; }
+      if (t >= 18 && t <= 28 && ph >= 5 && ph <= 6.8)                         { crop = "Potato"; reason = "Cooler temperature and slightly acidic soil support potato."; }
 
       qs("#cropResultBody").innerHTML = `
         <div class="rec-item"><strong>Recommended crop</strong>${crop}</div>
@@ -1330,172 +1294,23 @@
       `;
     }
 
-    qs("#cropForm").addEventListener("submit", e => {
-      e.preventDefault();
-      cropRecommendation();
-    });
+    qs("#cropForm").addEventListener("submit", e => { e.preventDefault(); cropRecommendation(); });
     cropRecommendation();
 
-    const weatherData = {
-      Hyderabad: { temp: [31, 30, 29, 31, 32], rain: [20, 60, 40, 10, 0], humidity: [68, 74, 78, 66, 62] },
-      Kolkata: { temp: [32, 31, 30, 30, 31], rain: [65, 80, 55, 40, 35], humidity: [79, 84, 86, 82, 80] },
-      Pune: { temp: [28, 27, 28, 29, 29], rain: [35, 42, 28, 18, 12], humidity: [70, 74, 68, 65, 63] },
-      Lucknow: { temp: [34, 35, 33, 32, 34], rain: [10, 20, 65, 35, 15], humidity: [58, 61, 76, 72, 60] },
-      Bengaluru: { temp: [26, 25, 26, 27, 27], rain: [18, 24, 20, 12, 8], humidity: [72, 75, 70, 68, 66] }
-    };
 
-    let wChart;
-
-    function renderWeather(city = "Hyderabad") {
-      const d = weatherData[city];
-
-      qs("#weatherSummary").innerHTML = `
-        <div class="w-kpi"><div class="w-kpi-val">${d.temp[0]}°C</div><div class="w-kpi-label">Temperature</div></div>
-        <div class="w-kpi"><div class="w-kpi-val">${d.humidity[0]}%</div><div class="w-kpi-label">Humidity</div></div>
-        <div class="w-kpi"><div class="w-kpi-val">${d.rain[1]}%</div><div class="w-kpi-label">Rain chance</div></div>
-      `;
-
-      const adv = [];
-      if (d.rain.some(v => v > 50)) adv.push("Plan fungicide and spray windows carefully around heavy rain days.");
-      if (d.humidity.some(v => v > 80)) adv.push("High humidity increases disease pressure in dense canopies.");
-      if (d.temp.some(v => v > 32)) adv.push("Protect young plants from heat stress and review irrigation timing.");
-      if (!adv.length) adv.push("Conditions look stable. Continue regular scouting and irrigation checks.");
-
-      qs("#advisoryList").innerHTML = adv.map(a => `<div class="advisory-item">${a}</div>`).join("");
-
-      const ctx = qs("#weatherChart");
-      if (wChart) wChart.destroy();
-
-      const textColor = getComputedStyle(document.documentElement).getPropertyValue("--muted").trim();
-
-      wChart = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5"],
-          datasets: [
-            {
-              label: "Temp °C",
-              data: d.temp,
-              borderColor: "#2d6a4f",
-              backgroundColor: "rgba(45,106,79,.1)",
-              tension: 0.35,
-              fill: true
-            },
-            {
-              label: "Humidity %",
-              data: d.humidity,
-              borderColor: "#1a6fa0",
-              backgroundColor: "rgba(26,111,160,.08)",
-              tension: 0.35,
-              fill: true
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              labels: {
-                color: textColor,
-                font: { size: 11 }
-              }
-            }
-          },
-          scales: {
-            x: { ticks: { color: textColor } },
-            y: { ticks: { color: textColor } }
-          }
-        }
-      });
-    }
-
-    qs("#citySelector").addEventListener("change", e => renderWeather(e.target.value));
-    renderWeather();
-
-    const marketRows = [
-      { crop: "Tomato", price: 1850, trend: 12, market: "Bowenpally", series: [1500, 1580, 1620, 1710, 1760, 1800, 1850] },
-      { crop: "Rice", price: 2420, trend: 4, market: "Warangal", series: [2300, 2320, 2340, 2360, 2390, 2410, 2420] },
-      { crop: "Cotton", price: 7120, trend: -3, market: "Adilabad", series: [7360, 7300, 7280, 7200, 7180, 7150, 7120] },
-      { crop: "Chili", price: 12400, trend: 9, market: "Guntur", series: [11300, 11550, 11700, 11980, 12100, 12350, 12400] },
-      { crop: "Maize", price: 2140, trend: -1, market: "Nizamabad", series: [2190, 2185, 2170, 2165, 2150, 2148, 2140] }
-    ];
-
-    let pChart;
-
-    function renderMarket() {
-      qs("#priceTableBody").innerHTML = marketRows.map(r => `
-        <tr>
-          <td><strong>${r.crop}</strong></td>
-          <td>${r.price.toLocaleString()}</td>
-          <td class="${r.trend >= 0 ? "trend-up" : "trend-down"}">${r.trend >= 0 ? "+" : ""}${Math.abs(r.trend)}%</td>
-          <td style="color:var(--muted)">${r.market}</td>
-          <td>${
-            r.trend > 5
-              ? '<span class="badge badge-green">Sell now</span>'
-              : r.trend > 0
-              ? '<span class="badge badge-amber">Hold / monitor</span>'
-              : '<span class="badge badge-sky">Watch trend</span>'
-          }</td>
-        </tr>
-      `).join("");
-
-      const focus = marketRows[0];
-      const ctx = qs("#priceChart");
-      if (pChart) pChart.destroy();
-
-      const textColor = getComputedStyle(document.documentElement).getPropertyValue("--muted").trim();
-
-      pChart = new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: ["D1", "D2", "D3", "D4", "D5", "D6", "D7"],
-          datasets: [
-            {
-              label: `${focus.crop} ₹/qtl`,
-              data: focus.series,
-              backgroundColor: "rgba(45,106,79,.7)",
-              borderRadius: 6
-            }
-          ]
-        },
-        options: {
-          plugins: {
-            legend: {
-              labels: {
-                color: textColor,
-                font: { size: 11 }
-              }
-            }
-          },
-          scales: {
-            x: { ticks: { color: textColor } },
-            y: { ticks: { color: textColor } }
-          }
-        }
-      });
-    }
-
-    qs("#refreshMarket").addEventListener("click", () => {
-      marketRows.push(marketRows.shift());
-      renderMarket();
-    });
-    renderMarket();
-
+    /* ── Crop library ── */
     const cropLibrary = [
-      { name: "Tomato", summary: "Prefers warm conditions, moderate humidity, and well-drained soil.", tips: ["Scout for blight after rain", "Stake for airflow", "Harvest at full red colour"] },
-      { name: "Rice", summary: "Thrives in warm, humid climates with reliable water availability.", tips: ["Monitor water depth", "Watch for leaf blight", "Time fertiliser by stage"] },
-      { name: "Cotton", summary: "Needs full sunlight, moderate water, and careful pest scouting.", tips: ["Check boll development", "Prevent waterlogging", "Scout sucking pests early"] },
-      { name: "Chili", summary: "Performs best in warm weather with balanced moisture.", tips: ["Avoid fruit cracking", "Watch anthracnose in humid weather", "Grade fruits before sale"] },
-      { name: "Potato", summary: "Requires cooler growth periods and careful disease management.", tips: ["Avoid late blight conditions", "Use healthy seed tubers", "Cure harvested tubers properly"] },
-      { name: "Maize", summary: "Responsive to fertility and timing of rainfall.", tips: ["Nitrogen at key growth stages", "Watch for stem borers", "Harvest at correct grain moisture"] }
+      { name: "Tomato",  summary: "Prefers warm conditions, moderate humidity, and well-drained soil.", tips: ["Scout for blight after rain","Stake for airflow","Harvest at full red colour"] },
+      { name: "Rice",    summary: "Thrives in warm, humid climates with reliable water availability.", tips: ["Monitor water depth","Watch for leaf blight","Time fertiliser by stage"] },
+      { name: "Cotton",  summary: "Needs full sunlight, moderate water, and careful pest scouting.", tips: ["Check boll development","Prevent waterlogging","Scout sucking pests early"] },
+      { name: "Chili",   summary: "Performs best in warm weather with balanced moisture.", tips: ["Avoid fruit cracking","Watch anthracnose in humid weather","Grade fruits before sale"] },
+      { name: "Potato",  summary: "Requires cooler growth periods and careful disease management.", tips: ["Avoid late blight conditions","Use healthy seed tubers","Cure harvested tubers properly"] },
+      { name: "Maize",   summary: "Responsive to fertility and timing of rainfall.", tips: ["Nitrogen at key growth stages","Watch for stem borers","Harvest at correct grain moisture"] }
     ];
 
     function renderLibrary(filter = "") {
       const f = filter.toLowerCase();
-      const list = cropLibrary.filter(c =>
-        c.name.toLowerCase().includes(f) || c.summary.toLowerCase().includes(f)
-      );
-
+      const list = cropLibrary.filter(c => c.name.toLowerCase().includes(f) || c.summary.toLowerCase().includes(f));
       qs("#cropLibrary").innerHTML = list.map(c => `
         <article class="lib-card">
           <h4>${c.name}</h4>
@@ -1508,35 +1323,25 @@
     qs("#cropSearch").addEventListener("input", e => renderLibrary(e.target.value));
     renderLibrary();
 
-    const overlay = qs("#overlay");
-    const chatMsgs = qs("#chatMsgs");
+    /* ── Chat ── */
+    const overlay   = qs("#overlay");
+    const chatMsgs  = qs("#chatMsgs");
     const chatInput = qs("#chatInput");
-    const sendBtn = qs("#sendBtn");
-    const micBtn = qs("#micBtn");
+    const sendBtn   = qs("#sendBtn");
+    const micBtn    = qs("#micBtn");
     const voiceStatus = qs("#voiceStatus");
 
     const conversationHistory = [];
 
-    function openChat() {
-      overlay.classList.add("open");
-      chatInput.focus();
-    }
-
-    function closeChat() {
-      overlay.classList.remove("open");
-    }
+    function openChat()  { overlay.classList.add("open"); chatInput.focus(); }
+    function closeChat() { overlay.classList.remove("open"); }
 
     qs("#voiceBtn").addEventListener("click", openChat);
     qs("#voiceBtnHero").addEventListener("click", openChat);
     qs("#closeChat").addEventListener("click", closeChat);
 
-    overlay.addEventListener("click", e => {
-      if (e.target === overlay) closeChat();
-    });
-
-    document.addEventListener("keydown", e => {
-      if (e.key === "Escape") closeChat();
-    });
+    overlay.addEventListener("click", e => { if (e.target === overlay) closeChat(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeChat(); });
 
     chatInput.addEventListener("input", () => {
       sendBtn.disabled = !chatInput.value.trim();
@@ -1544,10 +1349,7 @@
     });
 
     chatInput.addEventListener("keydown", e => {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        sendMessage();
-      }
+      if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); }
     });
 
     function autoResize() {
@@ -1587,12 +1389,13 @@
       const thinking = appendThinking();
 
       try {
-        const res = await fetch("/api/chat", {
+        const res = await fetch("https://api.anthropic.com/v1/messages", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            system:
-              "You are Kisan AI, a friendly and knowledgeable farming assistant for Indian farmers. You help with crop disease identification, symptoms, treatment, soil health, NPK values, crop recommendations, weather interpretation, farm advisories, mandi prices, selling decisions, market timing, and general agricultural best practices. Keep answers practical, concise, and jargon-free. Use simple English or Hindi if the farmer writes in Hindi. Focus on actionable advice. Reference Indian crops, conditions, and markets when relevant.",
+            model: "claude-sonnet-4-6",
+            max_tokens: 1000,
+            system: "You are a friendly and knowledgeable farming assistant for Indian farmers. You help with crop disease identification, symptoms, treatment, soil health, NPK values, crop recommendations, weather interpretation, farm advisories, mandi prices, selling decisions, market timing, and general agricultural best practices. Keep answers practical, concise, and jargon-free. Use simple English or Hindi if the farmer writes in Hindi. Focus on actionable advice. Reference Indian crops, conditions, and markets when relevant.",
             messages: conversationHistory
           })
         });
@@ -1623,6 +1426,7 @@
 
     sendBtn.addEventListener("click", sendMessage);
 
+    /* ── Voice input ── */
     let recognition = null;
     let isListening = false;
     let speechSynthesisEnabled = false;
@@ -1638,24 +1442,20 @@
       recognition.onstart = () => {
         isListening = true;
         micBtn.classList.add("listening");
-        voiceStatus.textContent = "Listening... speak your question";
+        voiceStatus.textContent = "Listening… speak your question";
         speechSynthesisEnabled = true;
       };
 
       recognition.onresult = e => {
-        let interim = "";
-        let final = "";
-
+        let interim = "", final = "";
         for (let i = e.resultIndex; i < e.results.length; i++) {
           if (e.results[i].isFinal) final += e.results[i][0].transcript;
           else interim += e.results[i][0].transcript;
         }
-
         chatInput.value = final + interim;
         sendBtn.disabled = !chatInput.value.trim();
         autoResize();
-
-        voiceStatus.textContent = final ? "Got it! Sending..." : interim;
+        voiceStatus.textContent = final ? "Got it! Sending…" : interim;
       };
 
       recognition.onerror = e => {
@@ -1668,24 +1468,16 @@
       recognition.onend = () => {
         micBtn.classList.remove("listening");
         isListening = false;
-
         if (chatInput.value.trim()) {
-          setTimeout(() => {
-            voiceStatus.textContent = "";
-            sendMessage();
-          }, 400);
+          setTimeout(() => { voiceStatus.textContent = ""; sendMessage(); }, 400);
         } else {
           voiceStatus.textContent = "";
         }
       };
 
       micBtn.addEventListener("click", () => {
-        if (isListening) {
-          recognition.stop();
-        } else {
-          recognition.lang = qs("#langSel").value === "hi" ? "hi-IN" : "en-IN";
-          recognition.start();
-        }
+        if (isListening) recognition.stop();
+        else recognition.start();
       });
     } else {
       micBtn.title = "Voice input not supported in this browser";
@@ -1696,10 +1488,6 @@
         setTimeout(() => (voiceStatus.textContent = ""), 3000);
       });
     }
-
-    qs("#langSel").addEventListener("change", e => {
-      if (recognition) recognition.lang = e.target.value === "hi" ? "hi-IN" : "en-IN";
-    });
   </script>
 </body>
 </html>
